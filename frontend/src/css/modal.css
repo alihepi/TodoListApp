@@ -1,0 +1,14 @@
+.todo-modal{
+    position: absolute;
+    background: rgba(0, 0, 0, 0.250);
+    -webkit-backdrop-filter: blur(1.75px);
+    backdrop-filter: blur(1.75px);
+    min-height: 100%;
+    min-width: 100%;
+
+    z-index: 50;
+}
+
+.todo-modal .modal-todo-list{
+    transform: scale(1.15);
+}

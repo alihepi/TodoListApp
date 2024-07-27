@@ -1,0 +1,78 @@
+/*My Todo List Page*/
+.my-todo-list-page{
+    min-height: calc(100vh - 11.5rem);
+    background: #8ECAE6;
+    padding: 1rem 5rem; /*Mobil*/
+}
+.lists-btn{
+    font-size: 4rem;
+}
+.inactive{
+    font-size: 4rem;
+    cursor: default;
+    color: #8ECAE6;
+}
+.avtive{
+    cursor: pointer;
+    color: #023047;
+}
+
+/*Todo List*/
+.todo-list-main{
+    background: #FDFFB6;
+    border-radius: 0.75rem;
+    padding: 1rem 0.75rem 1rem 1rem;
+    min-width: 24.25rem; /*Mobil*/
+    min-height: 34rem; /*Mobil*/
+    max-height: 34rem;
+}
+.page-dot{
+    padding-right: 0.75rem;
+    border-right: 2px dashed #ffd6a583;
+    color: rgba(136, 136, 136, 0.747);
+}
+.list-header{
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid black;
+    cursor: default;
+}
+.todo-list-tasks{
+    min-height: 27rem; /*Mobil*/
+    overflow-y: auto;
+
+    overflow-x: hidden;
+}
+.todo-list-tasks::-webkit-scrollbar{
+    background: #eaec9d;
+    width: 0.45rem;
+    border-radius: 0.5rem;
+}
+.todo-list-tasks::-webkit-scrollbar-thumb{
+    background: #b4b84a;
+    border-radius: 0.5rem;
+}
+.todo-list-tasks::-webkit-scrollbar-track{
+    background: #eaec9d;
+}
+
+.bi-pen-fill:hover{
+    color: rgb(55, 85, 255);
+    cursor: pointer;
+}
+.bi-trash-fill:hover{
+    color: rgb(255, 0, 0);
+    cursor: pointer;
+}
+
+.task-text{
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid #b4b84a;
+    width: 100%;
+}
+.task-text:focus{
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #ff5b5b;
+}
+/*<input type='text' className='task-text' value={"Task " + (index + 1)}/>*/
