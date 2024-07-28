@@ -1,28 +1,31 @@
 const express = require('express');
 const router = express.Router();
-const { updateUser, deleteUser } = require('../controller/UserController');
+const { updateUser, deleteUser, getUser } = require('../controller/UserController');
 const { createUser, loginUser } = require('../controller/Auth');
 const { addTable, updateTable, deleteTable } = require('../controller/TableController');
 
-// Create a new user
+// Yeni bir kullanıcı oluştur
 router.post('/register', createUser);
 
-// Login a user
+// Kullanıcı girişi yap
 router.post('/login', loginUser);
 
-// Update a user
+// Kullanıcı bilgilerini getir
+router.get('/user/:id', getUser);
+
+// Hesap bilgilerini güncelle
 router.put('/user/:id', updateUser);
 
-// Delete a user
+// Hesabı sil
 router.delete('/user/:id', deleteUser);
 
-// Add a new table (to-do list) to a user
+// Yeni bir tablo (yapılacaklar listesi) ekle
 router.post('/user/:userId/tables', addTable);
 
-// Update an existing table (to-do list) of a user
+// Bir tabloyu (yapılacaklar listesi) güncelle
 router.put('/user/:userId/tables/:tableId', updateTable);
 
-// Delete a table (to-do list) from a user
+// Bir tabloyu (yapılacaklar listesi) sil
 router.delete('/user/:userId/tables/:tableId', deleteTable);
 
 module.exports = router;

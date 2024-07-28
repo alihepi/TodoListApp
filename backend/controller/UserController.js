@@ -40,4 +40,21 @@ const deleteUser = async (req, res) => {
     }
 };
 
-module.exports = { updateUser, deleteUser };
+const getUser = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const userRef = admin.firestore().collection('User').doc(id);
+        const userDoc = await userRef.get();
+
+        if (!userDoc.exists) {
+            return res.status(404).send({ error: 'Kullanıcı bulunamadı' });
+        }
+
+        res.status(200).send(userDoc.data());
+    } catch (error) {
+        res.status(500).send({ error: 'Kullanıcı bilgileri getirilirken bir hata oluştu' });
+    }
+};
+
+module.exports = { updateUser, deleteUser, getUser };
