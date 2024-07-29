@@ -33,12 +33,15 @@ const Navbar = ({ loggedIn = false }) => {
             {/* Kullanıcı Girişi Kontrolü ile Görev Sekmelerinin Kontrolü */}
             {loggedIn && (
                 <>
-                    <div className='d-flex float-left task-btns'>
-                        <span className={`tasks-btn completed text-center ${defaultTasks === 'completed' ? 'selected-task' : ''}`}
-                            onClick={() => handleTaskChange('completed')}>Tamamlanan Görevler</span>
-                        <span className={`tasks-btn incompletes text-center ${defaultTasks === 'incompletes' ? 'selected-task' : ''}`}
-                            onClick={() => handleTaskChange('incompletes')}>Tamamlanmayan Görevler</span>
-                    </div>
+                    <span className='d-flex float-left task-btns gap-3'>
+                        <span className='d-flex align-items-center nav-btns-addTodo'><i className="bi bi-plus-circle-fill fs-2"></i></span>
+                        <div className='d-flex float-left  align-items-center'>
+                            <span className={`tasks-btn completed text-center ${defaultTasks === 'completed' ? 'selected-task' : ''}`}
+                                onClick={() => handleTaskChange('completed')}>Tamamlanan Görevler</span>
+                            <span className={`tasks-btn incompletes text-center ${defaultTasks === 'incompletes' ? 'selected-task' : ''}`}
+                                onClick={() => handleTaskChange('incompletes')}>Tamamlanmayan Görevler</span>
+                        </div>
+                    </span>
                     <div className='d-flex float-left gap-3 justify-content-between align-items-center'>
                         <input
                             placeholder='Görev ara...'

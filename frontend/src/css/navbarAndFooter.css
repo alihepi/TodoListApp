@@ -4,6 +4,15 @@
     padding: 0.3rem 1rem;
 }
 
+.nav-btns-addTodo{
+    max-width: max-content;
+    color: rgb(230, 230, 230);
+    cursor: pointer;
+}
+.nav-btns-addTodo:hover{
+    color: white;
+}
+
 .task-btns {
     padding-left: 11rem;
 }
