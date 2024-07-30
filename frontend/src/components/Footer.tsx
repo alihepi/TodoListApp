@@ -1,15 +1,15 @@
-const Footer = ({ loggedIn = false, completedCount }) => {
+const Footer = ({ loggedIn = false, completedCount = 0 }) => {
 
     const levelDetection = (e) => {
-        if(0 < e && e < 10) {
+        if (0 < e && e < 10) {
             return 'Acemi';
-        } else if(10 <= e && e < 30) {
+        } else if (10 <= e && e < 30) {
             return 'Çaylak';
-        } else if(30 <= e && e < 50) {
+        } else if (30 <= e && e < 50) {
             return 'Hırslı';
-        } else if(50 <= e && e < 100) {
+        } else if (50 <= e && e < 100) {
             return 'Çalışkan';
-        } else if(100 <= e) {
+        } else if (100 <= e) {
             return 'Uzman';
         }
     }
