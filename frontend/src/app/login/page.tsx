@@ -13,25 +13,25 @@ export default function Login() {
     const [error, setError] = React.useState(null);
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const email = event.currentTarget.email.value;
-    const password = event.currentTarget.password.value;
+        event.preventDefault();
+        const email = event.currentTarget.email.value;
+        const password = event.currentTarget.password.value;
 
-    try {
-        const response = await TodoListAppDataService.login({ email, password });
-        console.log('Giriş başarılı:', response.data.message);
+        try {
+            const response = await TodoListAppDataService.login({ email, password });
+            console.log('Giriş başarılı:', response.data.message);
 
-        // Kullanıcı bilgilerini localStorage'a kaydet
-        localStorage.setItem('user', JSON.stringify(response.data.user));
-        localStorage.setItem('userid', JSON.stringify(response.data.user.id));
+            // Kullanıcı bilgilerini localStorage'a kaydet
+            localStorage.setItem('user', JSON.stringify(response.data.user));
+            localStorage.setItem('userid', JSON.stringify(response.data.user.id));
 
-        // Başarı durumunda yönlendirme
-        router.push('/my-todo-list');
-    } catch (error) {
-        console.error('Giriş işlemi sırasında hata oluştu:', error);
-        setError('Giriş başarısız, lütfen bilgilerinizi kontrol edin.');
-    }
-};
+            // Başarı durumunda yönlendirme
+            router.push('/my-todo-list');
+        } catch (error) {
+            console.error('Giriş işlemi sırasında hata oluştu:', error);
+            setError('Giriş başarısız, lütfen bilgilerinizi kontrol edin.');
+        }
+    };
 
 
     return (
