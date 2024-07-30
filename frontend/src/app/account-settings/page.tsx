@@ -7,6 +7,12 @@ import Footer from "@/components/Footer";
 import { useRouter } from 'next/navigation';
 import TodoListAppDataService from '@/services/TodoListAppDataService';
 
+// Tamamlanan görev sayısını hesaplamak için yardımcı fonksiyon
+const calculateCompletedCount = (user) => {
+    if (!user || !user.tables) return 0;
+    return user.tables.filter(todo => todo.todoStatus === true).length;
+};
+
 export default function Home() {
     const router = useRouter();
 
@@ -65,6 +71,9 @@ export default function Home() {
             // Şifreyi temizle
             setPassword('');
 
+            // Tamamlanan görev sayısını güncelle
+            setCompletedCount(calculateCompletedCount(updatedUser));
+
         } catch (error) {
             console.error('Kullanıcı bilgileri güncellenirken bir hata oluştu:', error);
         }
@@ -99,22 +108,16 @@ export default function Home() {
             setName(user.name);
             setSurname(user.surname);
             setEmail(user.email);
+            setCompletedCount(calculateCompletedCount(user)); // Tamamlanan görev sayısını güncelle
         }
-
-        // Tamamlanan görev sayısını getir
-        const fetchCompletedCount = async () => {
-            const usid = localStorage.getItem('userid');
-            const uid = usid ? JSON.parse(usid) : null;
-            try {
-                const response = await TodoListAppDataService.getCompletedCount(uid);
-                setCompletedCount(response.data.completedCount);
-            } catch (error) {
-                console.error('Tamamlanan görev sayısı alınırken bir hata oluştu:', error);
-            }
-        };
-
-        fetchCompletedCount();
     }, []);
+
+    useEffect(() => {
+        // Tamamlanan görev sayısını güncelle
+        if (user) {
+            setCompletedCount(calculateCompletedCount(user));
+        }
+    }, [user]);
 
     const backMainPage = () => {
         router.push('/my-todo-list');
