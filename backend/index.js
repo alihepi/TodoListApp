@@ -20,20 +20,18 @@ const serviceAccount = {
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: 'https://<your-project-id>.firebaseio.com'
+  databaseURL: `https://${process.env.FIREBASE_PROJECT_ID}.firebaseio.com`
 });
 
 const app = express();
 
 app.use(cors());
-
 app.use(bodyParser.json());
 
 const routes = require('./routes/routes');
-
 app.use('/api', routes);
 
 const PORT = 3000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Sunucu ${PORT} portunda çalışıyor`);
 });
