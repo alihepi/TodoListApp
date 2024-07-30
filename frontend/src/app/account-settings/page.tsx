@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import PrivateRoute from '@/components/PrivateRoute';
 import React, { useState, useEffect } from "react";
@@ -130,7 +130,13 @@ export default function Home() {
     return (
         <PrivateRoute>
             <div className="d-flex flex-column gap-2 main-page">
-                <Navbar/>
+                <Navbar 
+                    setIsModalOpen={setIsModalOpen}
+                    loggedIn={!!user}
+                    setCompIncomp={setCompIncomp}
+                    searchTerm={searchTerm}
+                    handleSearchChange={handleSearchChange}
+                />
                 <div className="my-todo-list-page d-flex flex-column align-items-center justify-content-center">
                     <span onClick={backMainPage} className="back-main-page fs-5 d-flex align-items-center gap-2 font-bold">
                         <i className="fs-4 bi bi-arrow-left-square-fill"></i> Anasayfa
