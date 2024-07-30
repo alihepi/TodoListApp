@@ -1,15 +1,13 @@
 'use client'
 
 import PrivateRoute from '@/components/PrivateRoute';
-
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FormEvent } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useRouter } from 'next/navigation';
 import TodoListAppDataService from '@/services/TodoListAppDataService';
 
 export default function Home() {
-
     const router = useRouter();
 
     // Kullanıcı bilgilerini localStorage'dan al
