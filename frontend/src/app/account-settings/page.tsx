@@ -33,7 +33,7 @@ export default function Home() {
     const [email, setEmail] = useState(user ? user.email : '');
     const [password, setPassword] = useState('');
 
-    const handleUserInformation = async (event) => {
+    const handleUserInformation = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         console.log('Kullanıcı Bilgileri:', { name, surname, email, password });
 
