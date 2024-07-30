@@ -5,12 +5,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import TodoListAppDataService from '@/services/TodoListAppDataService';
 
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function Login() {
     const router = useRouter();
-    const [error, setError] = React.useState(null);
+    const [error, setError] = React.useState<string | null>(null);
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -32,7 +32,6 @@ export default function Login() {
             setError('Giriş başarısız, lütfen bilgilerinizi kontrol edin.');
         }
     };
-
 
     return (
         <div className="d-flex flex-column gap-2 main-page">
