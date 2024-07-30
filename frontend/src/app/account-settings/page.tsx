@@ -8,9 +8,9 @@ import { useRouter } from 'next/navigation';
 import TodoListAppDataService from '@/services/TodoListAppDataService';
 
 // Tamamlanan görev sayısını hesaplamak için yardımcı fonksiyon
-const calculateCompletedCount = (user) => {
+const calculateCompletedCount = (user: any) => {
     if (!user || !user.tables) return 0;
-    return user.tables.filter(todo => todo.todoStatus === true).length;
+    return user.tables.filter((todo: any) => todo.todoStatus === true).length;
 };
 
 export default function Home() {
