@@ -35,7 +35,7 @@ export default function Home() {
     const [accountInf, setAccountInf] = useState('none');
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const handleUserInformation = async (event) => {
+    const handleUserInformation = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         console.log('Kullanıcı Bilgileri:', { name, surname, email, password });
 
@@ -109,7 +109,7 @@ export default function Home() {
         setSearchTerm(e.target.value);
     };
 
-    const setCompIncomp = (taskType) => {
+    const setCompIncomp = (taskType: string) => {
         setDefaultTasks(taskType);
     };
 
