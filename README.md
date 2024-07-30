@@ -11,3 +11,8 @@
 2. [Gereksinim Analizi](./readme/Requirements.md)
 3. [Durum Diyagramı](./readme/StateDiagram.md)
 4. [Durum Senaryoları](./readme/CaseScenarios.md)
+5. [Frontend](./readme/Frontend.md)
+6. [Backend](./readme/Backend.md)
+6. [Test](./readme/Test.md)
+6. [Geliştirici ve Kullanıcı Dokümantasyonları](./readme/DevAndUserDoc.md)
+

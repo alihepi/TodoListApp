@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { updateUser, deleteUser, getUser } = require('../controller/UserController');
 const { createUser, loginUser } = require('../controller/Auth');
-const { addTable, updateTable, deleteTable } = require('../controller/TableController');
+const { addTable, updateTable, deleteTable, updateTaskStatus } = require('../controller/TableController');
 
 // Yeni bir kullanıcı oluştur
 router.post('/register', createUser);
@@ -27,5 +27,8 @@ router.put('/user/:userId/tables/:tableId', updateTable);
 
 // Bir tabloyu (yapılacaklar listesi) sil
 router.delete('/user/:userId/tables/:tableId', deleteTable);
+
+// Görev durumunu güncellemek
+router.patch('/users/:userId/tables/:tableId/tasks/:taskId', updateTaskStatus);
 
 module.exports = router;

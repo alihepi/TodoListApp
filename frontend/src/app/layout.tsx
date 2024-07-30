@@ -9,6 +9,8 @@ import "../css/user.css"
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
+import { AuthProvider } from '@/context/AuthContext';
+
 export const metadata: Metadata = {
   title: "todo list app",
   description: "Todo list app built with Next.js",
@@ -20,8 +22,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="body-bgc">{children}</body>
-    </html>
+    <AuthProvider>
+      <html lang="en">
+        <body className="body-bgc">{children}</body>
+      </html>
+    </AuthProvider>
   );
 }

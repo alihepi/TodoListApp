@@ -38,6 +38,10 @@ Link{
     color: black;
 }
 
+.cursor-pointer{
+    cursor: pointer;
+}
+
 
 /* Home Page*/
 .home-page{

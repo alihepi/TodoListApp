@@ -110,6 +110,21 @@
 
 -----------------------------------------
 
+<br/><br/><br/>
+
+-----------------------------------------
+| **Senaryo ID**     | U8 |
+|-------------|---------------------------------------------------------------------------------------------------------------|
+| **Senaryo**     | Liste Arama |
+| **Aktör**    | Kullanıcı |
+| **Önkoşullar**  | Kullanıcının giriş yapılmış durumda olması |
+| **Hedef Şartlar**  ||
+|| • Var olan todo listler arasında arama yapılır |
+| **Ana Başarısı Senaryosu**   ||
+|| **1.** Kullanıcı bulamk istediği todo list'in adını arama kısmına girer <br/> **2.**  Sistem kullanıcının bulmak istediği todo list'i arar ve gösterir | 
+
+-----------------------------------------
+
 <br/>
 <br/>
 <br/>

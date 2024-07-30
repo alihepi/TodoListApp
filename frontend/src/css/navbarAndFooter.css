@@ -4,6 +4,14 @@
     padding: 0.3rem 1rem;
 }
 
+.add-todo-btn{
+    color: rgb(211, 211, 211);
+    cursor: pointer;
+}
+.add-todo-btn:hover{
+    color: white;
+}
+
 .task-btns {
     padding-left: 11rem;
 }
@@ -17,14 +25,14 @@
 }
 
 .completed {
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.incomplete {
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
     border-right: 2px solid #219EBC;
-}
-
-.incompletes {
-    border-top-right-radius: 1rem;
-    border-bottom-right-radius: 1rem;
 }
 
 .selected-task{
@@ -66,7 +74,10 @@
 .account-set-wnd .a-s-w-link span:hover{
     font-weight: bold;
 }
-
+.add-todo-btn{
+    color: rgb(211, 211, 211);
+    cursor: pointer;
+}
 
 /*Footer*/
 .footer-set {
@@ -88,6 +99,11 @@
 }
 .streak-fire{
     z-index: 5;
+}
+
+footer .opacity-75 a{
+    color: black;
+    text-decoration: none;
 }
 
 

@@ -1,0 +1,9 @@
+.back-main-page{
+    position: absolute;
+    top: 7rem;
+    left: 1.25rem;
+    background: rgba(128, 128, 128, 0.5);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}

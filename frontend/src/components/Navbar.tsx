@@ -4,54 +4,75 @@ import Image from 'next/image';
 import todoLogo from '@/images/todo-logo.png';
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
-const Navbar = ({ loggedIn = false }) => {
-
-    const [defaultTasks, setDefaultTasks] = useState('completed');
+const Navbar = ({ setIsModalOpen, loggedIn = false, setCompIncomp, searchTerm, handleSearchChange }) => {
+    const router = useRouter();
+    const [defaultTasks, setDefaultTasks] = useState('incomplete');
     const [accountInf, setAccountInf] = useState('none');
 
-    const handleTaskChange = (e) => {
-        if (e === 'incompletes') {
-            setDefaultTasks('incompletes');
-        } else {
-            setDefaultTasks('completed');
-        }
-    }
+    const handleTaskChange = (taskType) => {
+        setDefaultTasks(taskType);
+        setCompIncomp(taskType);
+    };
 
-    const handleAccountToggle = () => {
+    const accountToggle = () => {
         setAccountInf(prev => (prev === 'none' ? 'block' : 'none'));
-    }
+    };
+
+    const handleAddTodo = () => {
+        setIsModalOpen(true); // Modal'ı aç
+    };
+
+    const logout = () => {
+        localStorage.removeItem('user');
+        localStorage.removeItem('userid');
+        router.push('/');
+    };
 
     return (
         <div className='container d-flex float-left justify-content-between align-items-center full-w navbar-set'>
-            <Image
-                src={todoLogo}
-                width={75}
-                height={75}
-                alt="logo"
-            />
-            {/* Kullanıcı Girişi Kontrolü ile Görev Sekmelerinin Kontrolü */}
+            <Image src={todoLogo} width={75} height={75} alt="logo" />
             {loggedIn && (
                 <>
-                    <div className='d-flex float-left task-btns'>
-                        <span className={`tasks-btn completed text-center ${defaultTasks === 'completed' ? 'selected-task' : ''}`}
-                            onClick={() => handleTaskChange('completed')}>Tamamlanan Görevler</span>
-                        <span className={`tasks-btn incompletes text-center ${defaultTasks === 'incompletes' ? 'selected-task' : ''}`}
-                            onClick={() => handleTaskChange('incompletes')}>Tamamlanmayan Görevler</span>
-                    </div>
+                    <span className='d-flex gap-3 float-left task-btns align-items-center'>
+                        <span className='d-flex align-items-center fs-2 add-todo-btn' onClick={handleAddTodo}>
+                            <i className="bi bi-plus-circle-fill"></i>
+                        </span>
+                        <div className='d-flex float-left align-items-center'>
+                            <span
+                                className={`tasks-btn incomplete text-center ${defaultTasks === 'incomplete' ? 'selected-task' : ''}`}
+                                onClick={() => handleTaskChange('incomplete')}
+                            >
+                                Tamamlanmayan Görevler
+                            </span>
+                            <span
+                                className={`tasks-btn completed text-center ${defaultTasks === 'completed' ? 'selected-task' : ''}`}
+                                onClick={() => handleTaskChange('completed')}
+                            >
+                                Tamamlanan Görevler
+                            </span>
+                        </div>
+                    </span>
                     <div className='d-flex float-left gap-3 justify-content-between align-items-center'>
                         <input
                             placeholder='Görev ara...'
                             className='task-search-inp'
+                            value={searchTerm}
+                            onChange={handleSearchChange}
                         />
                         <span>
-                            <span onClick={handleAccountToggle}>
+                            <span onClick={accountToggle}>
                                 <i className="bi bi-person-circle fs-3 text-color-black"></i>
                             </span>
-                            <span style={{ display: `${accountInf}` }}>
+                            <span style={{ display: accountInf }}>
                                 <span className='account-set-wnd d-flex flex-column gap-1 align-items-center justify-content-center'>
-                                    <Link href={'/account-settings'} className='a-s-w-link'><span>Hesap Ayarları</span></Link>
-                                    <Link href={'/'} className='a-s-w-link'><span>Çıkış Yap</span></Link>
+                                    <Link href={'/account-settings'} className='a-s-w-link'>
+                                        <span>Hesap Ayarları</span>
+                                    </Link>
+                                    <span onClick={logout} className='cursor-pointer'>
+                                        Çıkış Yap
+                                    </span>
                                 </span>
                             </span>
                         </span>
@@ -60,6 +81,6 @@ const Navbar = ({ loggedIn = false }) => {
             )}
         </div>
     );
-}
+};
 
 export default Navbar;
