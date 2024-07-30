@@ -7,6 +7,7 @@
 5. **Liste Oluşturma:** Kullanıcının yeni bir yapılacaklar listesi oluşturması
 6. **Liste Düzenleme:** Kullanıcının var olan bir yapılacaklar listesini düzenlemesi
 7. **Liste Silme:** Kullanıcının var olan bir yapılacaklar listesini silmesi
+8. **Liste Arama:** Kullanıcının var olan listeler arasında arama yapabilmesi
 
 
 <br/>

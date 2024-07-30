@@ -1,0 +1,65 @@
+/*BODY*/
+.body-bgc {
+    background: #264653;
+}
+
+
+
+/*Kontrol*/
+.kontrol{
+    background: aquamarine;
+}
+
+
+
+/*Main*/
+
+.main-page{
+    background: #747474;
+}
+
+.full-w{
+    min-width: 100%;
+}
+
+.full-h{
+    min-height: 100%;
+}
+
+Link{
+    text-decoration: none;
+}
+
+.font-bold{
+    font-weight: bold;
+}
+
+.text-color-black{
+    color: black;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+
+/* Home Page*/
+.home-page{
+    min-height: calc(100vh - 11.5rem);
+    background: #9e9e9e;
+    padding: 1rem;
+    background: url('../images/home-background.jpg') no-repeat center center/cover;
+}
+
+.start-btn{
+    text-decoration: none;
+    color: white;
+    background: rgb(228, 44, 44);
+    border-radius: 0.35rem;
+    padding: 0.5rem 1rem;
+}
+.start-btn:hover{
+    background: rgb(238, 57, 57);
+    color: white;
+    box-shadow: 1px 2px 5px 1px #7c0000;
+}

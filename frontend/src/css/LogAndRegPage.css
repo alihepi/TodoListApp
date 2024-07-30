@@ -1,0 +1,23 @@
+/*Login & Register Page*/
+.login-set{
+    background: #e0dbe0;
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+}
+.account-set{
+    background: #219EBC;
+    min-width: 27rem;
+}
+.login-form input{
+    border: none;
+    border-radius: 0.35rem;
+    padding: 0.5rem 1rem;
+    min-width: 20rem;
+}
+.int-text{
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+.login-btns button{
+    min-width: 5.5rem;
+}
