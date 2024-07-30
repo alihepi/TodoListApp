@@ -14,7 +14,7 @@ interface NavbarProps {
     handleSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ setIsModalOpen, loggedIn = false, setCompIncomp, searchTerm, handleSearchChange }) => {
+const Navbar: React.FC<NavbarProps> =  ({ setIsModalOpen = () => {}, loggedIn = false, setCompIncomp = () => {}, searchTerm = "", handleSearchChange = () => {} }) => {
     const router = useRouter();
     const [defaultTasks, setDefaultTasks] = React.useState<string>('incomplete');
     const [accountInf, setAccountInf] = React.useState<string>('none');
