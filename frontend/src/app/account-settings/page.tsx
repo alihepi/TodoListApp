@@ -1,7 +1,7 @@
 'use client'
 
 import PrivateRoute from '@/components/PrivateRoute';
-import React, { useState, useEffect, FormEvent } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useRouter } from 'next/navigation';
@@ -30,8 +30,12 @@ export default function Home() {
     const [surname, setSurname] = useState(user ? user.surname : '');
     const [email, setEmail] = useState(user ? user.email : '');
     const [password, setPassword] = useState('');
+    const [searchTerm, setSearchTerm] = useState('');
+    const [defaultTasks, setDefaultTasks] = useState('incomplete');
+    const [accountInf, setAccountInf] = useState('none');
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const handleUserInformation = async (event: FormEvent<HTMLFormElement>) => {
+    const handleUserInformation = async (event) => {
         event.preventDefault();
         console.log('Kullanıcı Bilgileri:', { name, surname, email, password });
 
@@ -101,10 +105,38 @@ export default function Home() {
         router.push('/my-todo-list');
     };
 
+    const handleSearchChange = (e) => {
+        setSearchTerm(e.target.value);
+    };
+
+    const setCompIncomp = (taskType) => {
+        setDefaultTasks(taskType);
+    };
+
+    const accountToggle = () => {
+        setAccountInf(prev => (prev === 'none' ? 'block' : 'none'));
+    };
+
+    const handleAddTodo = () => {
+        setIsModalOpen(true); // Modal'ı aç
+    };
+
+    const logout = () => {
+        localStorage.removeItem('user');
+        localStorage.removeItem('userid');
+        router.push('/');
+    };
+
     return (
         <PrivateRoute>
             <div className="d-flex flex-column gap-2 main-page">
-                <Navbar />
+                <Navbar
+                    setIsModalOpen={setIsModalOpen}
+                    loggedIn={!!user} // Eğer user varsa true, yoksa false
+                    setCompIncomp={setCompIncomp}
+                    searchTerm={searchTerm}
+                    handleSearchChange={handleSearchChange}
+                />
                 <div className="my-todo-list-page d-flex flex-column align-items-center justify-content-center">
                     <span onClick={backMainPage} className="back-main-page fs-5 d-flex align-items-center gap-2 font-bold">
                         <i className="fs-4 bi bi-arrow-left-square-fill"></i> Anasayfa
