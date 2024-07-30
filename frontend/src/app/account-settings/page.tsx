@@ -130,13 +130,7 @@ export default function Home() {
     return (
         <PrivateRoute>
             <div className="d-flex flex-column gap-2 main-page">
-                <Navbar
-                    setIsModalOpen={setIsModalOpen}
-                    loggedIn={!!user} // Eğer user varsa true, yoksa false
-                    setCompIncomp={setCompIncomp}
-                    searchTerm={searchTerm}
-                    handleSearchChange={handleSearchChange}
-                />
+                <Navbar/>
                 <div className="my-todo-list-page d-flex flex-column align-items-center justify-content-center">
                     <span onClick={backMainPage} className="back-main-page fs-5 d-flex align-items-center gap-2 font-bold">
                         <i className="fs-4 bi bi-arrow-left-square-fill"></i> Anasayfa
