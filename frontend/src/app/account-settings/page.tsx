@@ -35,7 +35,7 @@ export default function Home() {
     const [accountInf, setAccountInf] = useState('none');
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const handleUserInformation = async (event: React.FormEvent<HTMLFormElement>) => {
+    const handleUserInformation = async (event) => {
         event.preventDefault();
         console.log('Kullanıcı Bilgileri:', { name, surname, email, password });
 
@@ -105,7 +105,7 @@ export default function Home() {
         router.push('/my-todo-list');
     };
 
-    const handleSearchChange = (e) => {
+    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(e.target.value);
     };
 
