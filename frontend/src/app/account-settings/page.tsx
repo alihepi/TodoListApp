@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import PrivateRoute from '@/components/PrivateRoute';
 import React, { useState, useEffect } from "react";
@@ -34,6 +34,7 @@ export default function Home() {
     const [defaultTasks, setDefaultTasks] = useState('incomplete');
     const [accountInf, setAccountInf] = useState('none');
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [completedCount, setCompletedCount] = useState(0); // Yeni state
 
     const handleUserInformation = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -99,6 +100,20 @@ export default function Home() {
             setSurname(user.surname);
             setEmail(user.email);
         }
+
+        // Tamamlanan görev sayısını getir
+        const fetchCompletedCount = async () => {
+            const usid = localStorage.getItem('userid');
+            const uid = usid ? JSON.parse(usid) : null;
+            try {
+                const response = await TodoListAppDataService.getCompletedCount(uid);
+                setCompletedCount(response.data.completedCount);
+            } catch (error) {
+                console.error('Tamamlanan görev sayısı alınırken bir hata oluştu:', error);
+            }
+        };
+
+        fetchCompletedCount();
     }, []);
 
     const backMainPage = () => {
@@ -130,13 +145,7 @@ export default function Home() {
     return (
         <PrivateRoute>
             <div className="d-flex flex-column gap-2 main-page">
-                <Navbar 
-                    setIsModalOpen={setIsModalOpen}
-                    loggedIn={!!user}
-                    setCompIncomp={setCompIncomp}
-                    searchTerm={searchTerm}
-                    handleSearchChange={handleSearchChange}
-                />
+                <Navbar/>
                 <div className="my-todo-list-page d-flex flex-column align-items-center justify-content-center">
                     <span onClick={backMainPage} className="back-main-page fs-5 d-flex align-items-center gap-2 font-bold">
                         <i className="fs-4 bi bi-arrow-left-square-fill"></i> Anasayfa
@@ -184,7 +193,7 @@ export default function Home() {
                         </form>
                     </div>
                 </div>
-                <Footer />
+                <Footer loggedIn={!!user} completedCount={completedCount} />
             </div>
         </PrivateRoute>
     );
