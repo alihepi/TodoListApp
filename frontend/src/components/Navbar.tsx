@@ -1,17 +1,23 @@
-'use client';
-
+import React from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import todoLogo from '@/images/todo-logo.png';
-import React, { useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
-const Navbar = ({ setIsModalOpen, loggedIn = false, setCompIncomp, searchTerm, handleSearchChange }) => {
+interface NavbarProps {
+    setIsModalOpen: (open: boolean) => void;
+    loggedIn?: boolean;
+    setCompIncomp: (taskType: string) => void;
+    searchTerm: string;
+    handleSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ setIsModalOpen, loggedIn = false, setCompIncomp, searchTerm, handleSearchChange }) => {
     const router = useRouter();
-    const [defaultTasks, setDefaultTasks] = useState('incomplete');
-    const [accountInf, setAccountInf] = useState('none');
+    const [defaultTasks, setDefaultTasks] = React.useState<string>('incomplete');
+    const [accountInf, setAccountInf] = React.useState<string>('none');
 
-    const handleTaskChange = (taskType) => {
+    const handleTaskChange = (taskType: string) => {
         setDefaultTasks(taskType);
         setCompIncomp(taskType);
     };
